@@ -1,0 +1,172 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+        "name": "hitpoints",
+        "values": [
+            {
+                "char1": 50,
+                "time": "2022-02-15 5:00 PM",
+                "char2": 45,
+                "char3": 30
+            },
+            {
+                "char1": 30,
+                "time": "2022-02-15 5:15 PM",
+                "char2": 50,
+                "char3": 25
+            },
+            {
+                "char1": 40,
+                "time": "2022-02-15 5:21 PM",
+                "char2": 52,
+                "char3": 27,
+                "char4": 50
+            },
+            {
+                "char1": 20,
+                "time": "2022-02-15 5:30 PM",
+                "char2": 48,
+                "char3": 26
+            },
+            {
+                "char1": 60,
+                "time": "2022-02-15 5:45 PM",
+                "char2": 60,
+                "char3": 45
+            }
+        ]
+    },
+    "hconcat": [
+        {
+            "layer": [
+                {
+                    "mark": "point",
+                    "params": [
+                        {
+                            "name": "timeSelect",
+                            "select": {
+                                "type": "point",
+                                "on": "mouseover",
+                                "encodings": [
+                                    "x"
+                                ],
+                                "nearest": true
+                            },
+                            "value": false
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "time",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "char1",
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "mark": "line",
+                    "encoding": {
+                        "x": {
+                            "field": "time",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "char1",
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "mark": "rule",
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "timeSelect"
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "y": {
+                            "field": "char1",
+                            "type": "quantitative"
+                        }
+                    }
+                },
+                {
+                    "mark": "rule",
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "timeSelect"
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "x": {
+                            "field": "time",
+                            "type": "temporal"
+                        }
+                    }
+                },
+                {
+                    "mark": {
+                        "type": "text",
+                        "dy": 30
+                    },
+                    "transform": [
+                        {
+                            "filter": {
+                                "param": "timeSelect"
+                            }
+                        }
+                    ],
+                    "encoding": {
+                        "text": {
+                            "field": "time",
+                            "timeUnit": "minutes"
+                        },
+                        "x": {
+                            "field": "time",
+                            "type": "temporal"
+                        },
+                        "y": {
+                            "field": "char1",
+                            "type": "quantitative"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "mark": "bar",
+            "transform": [
+                {
+                    "filter": {
+                        "param": "timeSelect"
+                    }
+                },
+                {
+                    "fold": [
+                        "char1",
+                        "char2",
+                        "char3",
+                        "char4"
+                    ]
+                }
+            ],
+            "encoding": {
+                "x": {
+                    "field": "value",
+                    "type": "quantitative"
+                },
+                "y": {
+                    "field": "key",
+                    "type": "nominal"
+                }
+            }
+        }
+    ]
+}
