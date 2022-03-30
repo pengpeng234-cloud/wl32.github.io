@@ -1,0 +1,14 @@
+{
+  "name": "@pengpeng234-cloud/tree-explorer-for-the-city-of-champaign",
+  "main": "f1929b6f208bb0bb@141.js",
+  "version": "141.0.0",
+  "homepage": "https://observablehq.com/@pengpeng234-cloud/tree-explorer-for-the-city-of-champaign",
+  "author": {
+    "name": "pengpeng234-cloud",
+    "url": "https://observablehq.com/@pengpeng234-cloud"
+  },
+  "type": "module",
+  "peerDependencies": {
+    "@observablehq/runtime": "4"
+  }
+}
