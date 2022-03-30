@@ -12,3 +12,6 @@ What to submit:
 A PDF file contains two links:
 (1) Your Github Page showing the visualization
 (2) Your Github repo containing the script(s) for making the visualization
+
+
+Achieve most of my D3 function on obervable. 
